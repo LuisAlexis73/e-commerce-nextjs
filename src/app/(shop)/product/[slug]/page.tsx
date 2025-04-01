@@ -1,5 +1,6 @@
 import { QuantitySelector } from "@/components/product/quantity-selector/QuantitySelector"
 import { SizeSelector } from "@/components/product/size-selector/SizeSelector"
+import { ProductMobileSladeShow } from "@/components/product/slide-show/ProductMobileSladeShow"
 import { ProductSladeShow } from "@/components/product/slide-show/ProductSladeShow"
 import { titleFont } from "@/config/fonts"
 import { initialData } from "@/seed/seed"
@@ -23,7 +24,11 @@ export default async function ProductPage({ params }: Props) {
   return (
     <div className="mt-20 mb-20 grid grid-cols-1 md:grid-cols-3 gap-3">
       <div className="col-span-1 md:col-span-2">
-        <ProductSladeShow images={product.images} title={product.title} />
+        {/* Mobile SlideShow */}
+        <ProductMobileSladeShow images={product.images} title={product.title} className="block md:hidden" />
+
+        {/* Desktop SlideShow */}
+        <ProductSladeShow images={product.images} title={product.title} className="hidden md:block" />
       </div>
 
       <div className="col-span-1 px-5">
