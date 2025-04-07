@@ -18,10 +18,10 @@ export default async function CategoryPage({ params }: Props) {
   const products = seedProducts.filter(product => product.gender === id)
 
   const labels: Record<Category, string> = {
-    'men': 'Hombres',
-    'women': 'Mujeres',
-    'kid': 'Niños',
-    'unisex': 'Todos',
+    'men': 'Men',
+    'women': 'Women',
+    'kid': 'Kids',
+    'unisex': 'Unisex',
   }
 
   // if (id === 'kids') {
@@ -30,7 +30,7 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <>
-      <Title title={`Artículos para ${(labels as any)[id]}`} subtitle="Todos los productos" className="mb-2" />
+      <Title title={`Items for ${(labels as any)[id]}`} subtitle="All products" className="mb-2" />
 
       <ProductGrid products={products} />
     </>
