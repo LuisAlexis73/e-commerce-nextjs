@@ -17,7 +17,7 @@ export default function CartPage() {
   // redirect('/empty')
 
   return (
-    <div className="flex justify-center items-center mb-72 px-10 sm:px-0">
+    <div className="flex justify-center items-center mb-10 px-10 sm:px-0">
       <div className="flex flex-col w-[1000px]">
         <Title title="Cart" subtitle="" className="text-center mb-10" />
         <div className="grid grid-col-1 sm:grid-cols-2 gap-10">
