@@ -28,7 +28,7 @@ Copy the `.env.template` file and rename it to `.env` with your environment vari
 npm install
 ```
 
-4. Execute docker:
+4. **Execute docker:**
 ```bash
 docker-compose up -d
 ```
@@ -36,7 +36,12 @@ docker-compose up -d
 5. **Generate Prisma client and run migrations:**
 run `npx prisma generate`and `npx prisma migrate dev --name init`
 
-**6. Start server:**
+6. **Run seed:**
+```bash
+npm run seed
+```
+
+7. **Start server:**
 ```bash
 npm run dev
 ```
