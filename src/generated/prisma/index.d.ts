@@ -50,7 +50,7 @@ export const Gender: {
   men: 'men',
   women: 'women',
   unisex: 'unisex',
-  kids: 'kids'
+  kid: 'kid'
 };
 
 export type Gender = (typeof Gender)[keyof typeof Gender]
@@ -2255,7 +2255,7 @@ export namespace Prisma {
     description: number
     inStock: number
     price: number
-    size: number
+    sizes: number
     slug: number
     tags: number
     gender: number
@@ -2302,7 +2302,7 @@ export namespace Prisma {
     description?: true
     inStock?: true
     price?: true
-    size?: true
+    sizes?: true
     slug?: true
     tags?: true
     gender?: true
@@ -2402,7 +2402,7 @@ export namespace Prisma {
     description: string
     inStock: number
     price: number
-    size: $Enums.Size[]
+    sizes: $Enums.Size[]
     slug: string
     tags: string[]
     gender: $Enums.Gender
@@ -2434,7 +2434,7 @@ export namespace Prisma {
     description?: boolean
     inStock?: boolean
     price?: boolean
-    size?: boolean
+    sizes?: boolean
     slug?: boolean
     tags?: boolean
     gender?: boolean
@@ -2450,7 +2450,7 @@ export namespace Prisma {
     description?: boolean
     inStock?: boolean
     price?: boolean
-    size?: boolean
+    sizes?: boolean
     slug?: boolean
     tags?: boolean
     gender?: boolean
@@ -2464,7 +2464,7 @@ export namespace Prisma {
     description?: boolean
     inStock?: boolean
     price?: boolean
-    size?: boolean
+    sizes?: boolean
     slug?: boolean
     tags?: boolean
     gender?: boolean
@@ -2478,14 +2478,14 @@ export namespace Prisma {
     description?: boolean
     inStock?: boolean
     price?: boolean
-    size?: boolean
+    sizes?: boolean
     slug?: boolean
     tags?: boolean
     gender?: boolean
     categoryId?: boolean
   }
 
-  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "inStock" | "price" | "size" | "slug" | "tags" | "gender" | "categoryId", ExtArgs["result"]["product"]>
+  export type ProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "inStock" | "price" | "sizes" | "slug" | "tags" | "gender" | "categoryId", ExtArgs["result"]["product"]>
   export type ProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     productImage?: boolean | Product$productImageArgs<ExtArgs>
@@ -2510,7 +2510,7 @@ export namespace Prisma {
       description: string
       inStock: number
       price: number
-      size: $Enums.Size[]
+      sizes: $Enums.Size[]
       slug: string
       tags: string[]
       gender: $Enums.Gender
@@ -2945,7 +2945,7 @@ export namespace Prisma {
     readonly description: FieldRef<"Product", 'String'>
     readonly inStock: FieldRef<"Product", 'Int'>
     readonly price: FieldRef<"Product", 'Float'>
-    readonly size: FieldRef<"Product", 'Size[]'>
+    readonly sizes: FieldRef<"Product", 'Size[]'>
     readonly slug: FieldRef<"Product", 'String'>
     readonly tags: FieldRef<"Product", 'String[]'>
     readonly gender: FieldRef<"Product", 'Gender'>
@@ -4484,7 +4484,7 @@ export namespace Prisma {
     description: 'description',
     inStock: 'inStock',
     price: 'price',
-    size: 'size',
+    sizes: 'sizes',
     slug: 'slug',
     tags: 'tags',
     gender: 'gender',
@@ -4670,7 +4670,7 @@ export namespace Prisma {
     description?: StringFilter<"Product"> | string
     inStock?: IntFilter<"Product"> | number
     price?: FloatFilter<"Product"> | number
-    size?: EnumSizeNullableListFilter<"Product">
+    sizes?: EnumSizeNullableListFilter<"Product">
     slug?: StringFilter<"Product"> | string
     tags?: StringNullableListFilter<"Product">
     gender?: EnumGenderFilter<"Product"> | $Enums.Gender
@@ -4685,7 +4685,7 @@ export namespace Prisma {
     description?: SortOrder
     inStock?: SortOrder
     price?: SortOrder
-    size?: SortOrder
+    sizes?: SortOrder
     slug?: SortOrder
     tags?: SortOrder
     gender?: SortOrder
@@ -4704,7 +4704,7 @@ export namespace Prisma {
     description?: StringFilter<"Product"> | string
     inStock?: IntFilter<"Product"> | number
     price?: FloatFilter<"Product"> | number
-    size?: EnumSizeNullableListFilter<"Product">
+    sizes?: EnumSizeNullableListFilter<"Product">
     tags?: StringNullableListFilter<"Product">
     gender?: EnumGenderFilter<"Product"> | $Enums.Gender
     categoryId?: StringFilter<"Product"> | string
@@ -4718,7 +4718,7 @@ export namespace Prisma {
     description?: SortOrder
     inStock?: SortOrder
     price?: SortOrder
-    size?: SortOrder
+    sizes?: SortOrder
     slug?: SortOrder
     tags?: SortOrder
     gender?: SortOrder
@@ -4739,7 +4739,7 @@ export namespace Prisma {
     description?: StringWithAggregatesFilter<"Product"> | string
     inStock?: IntWithAggregatesFilter<"Product"> | number
     price?: FloatWithAggregatesFilter<"Product"> | number
-    size?: EnumSizeNullableListFilter<"Product">
+    sizes?: EnumSizeNullableListFilter<"Product">
     slug?: StringWithAggregatesFilter<"Product"> | string
     tags?: StringNullableListFilter<"Product">
     gender?: EnumGenderWithAggregatesFilter<"Product"> | $Enums.Gender
@@ -4852,7 +4852,7 @@ export namespace Prisma {
     description: string
     inStock: number
     price?: number
-    size?: ProductCreatesizeInput | $Enums.Size[]
+    sizes?: ProductCreatesizesInput | $Enums.Size[]
     slug: string
     tags?: ProductCreatetagsInput | string[]
     gender: $Enums.Gender
@@ -4866,7 +4866,7 @@ export namespace Prisma {
     description: string
     inStock: number
     price?: number
-    size?: ProductCreatesizeInput | $Enums.Size[]
+    sizes?: ProductCreatesizesInput | $Enums.Size[]
     slug: string
     tags?: ProductCreatetagsInput | string[]
     gender: $Enums.Gender
@@ -4880,7 +4880,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     inStock?: IntFieldUpdateOperationsInput | number
     price?: FloatFieldUpdateOperationsInput | number
-    size?: ProductUpdatesizeInput | $Enums.Size[]
+    sizes?: ProductUpdatesizesInput | $Enums.Size[]
     slug?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -4894,7 +4894,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     inStock?: IntFieldUpdateOperationsInput | number
     price?: FloatFieldUpdateOperationsInput | number
-    size?: ProductUpdatesizeInput | $Enums.Size[]
+    sizes?: ProductUpdatesizesInput | $Enums.Size[]
     slug?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -4908,7 +4908,7 @@ export namespace Prisma {
     description: string
     inStock: number
     price?: number
-    size?: ProductCreatesizeInput | $Enums.Size[]
+    sizes?: ProductCreatesizesInput | $Enums.Size[]
     slug: string
     tags?: ProductCreatetagsInput | string[]
     gender: $Enums.Gender
@@ -4921,7 +4921,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     inStock?: IntFieldUpdateOperationsInput | number
     price?: FloatFieldUpdateOperationsInput | number
-    size?: ProductUpdatesizeInput | $Enums.Size[]
+    sizes?: ProductUpdatesizesInput | $Enums.Size[]
     slug?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -4933,7 +4933,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     inStock?: IntFieldUpdateOperationsInput | number
     price?: FloatFieldUpdateOperationsInput | number
-    size?: ProductUpdatesizeInput | $Enums.Size[]
+    sizes?: ProductUpdatesizesInput | $Enums.Size[]
     slug?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -5133,7 +5133,7 @@ export namespace Prisma {
     description?: SortOrder
     inStock?: SortOrder
     price?: SortOrder
-    size?: SortOrder
+    sizes?: SortOrder
     slug?: SortOrder
     tags?: SortOrder
     gender?: SortOrder
@@ -5295,7 +5295,7 @@ export namespace Prisma {
     deleteMany?: ProductScalarWhereInput | ProductScalarWhereInput[]
   }
 
-  export type ProductCreatesizeInput = {
+  export type ProductCreatesizesInput = {
     set: $Enums.Size[]
   }
 
@@ -5339,7 +5339,7 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type ProductUpdatesizeInput = {
+  export type ProductUpdatesizesInput = {
     set?: $Enums.Size[]
     push?: $Enums.Size | $Enums.Size[]
   }
@@ -5536,7 +5536,7 @@ export namespace Prisma {
     description: string
     inStock: number
     price?: number
-    size?: ProductCreatesizeInput | $Enums.Size[]
+    sizes?: ProductCreatesizesInput | $Enums.Size[]
     slug: string
     tags?: ProductCreatetagsInput | string[]
     gender: $Enums.Gender
@@ -5549,7 +5549,7 @@ export namespace Prisma {
     description: string
     inStock: number
     price?: number
-    size?: ProductCreatesizeInput | $Enums.Size[]
+    sizes?: ProductCreatesizesInput | $Enums.Size[]
     slug: string
     tags?: ProductCreatetagsInput | string[]
     gender: $Enums.Gender
@@ -5591,7 +5591,7 @@ export namespace Prisma {
     description?: StringFilter<"Product"> | string
     inStock?: IntFilter<"Product"> | number
     price?: FloatFilter<"Product"> | number
-    size?: EnumSizeNullableListFilter<"Product">
+    sizes?: EnumSizeNullableListFilter<"Product">
     slug?: StringFilter<"Product"> | string
     tags?: StringNullableListFilter<"Product">
     gender?: EnumGenderFilter<"Product"> | $Enums.Gender
@@ -5692,7 +5692,7 @@ export namespace Prisma {
     description: string
     inStock: number
     price?: number
-    size?: ProductCreatesizeInput | $Enums.Size[]
+    sizes?: ProductCreatesizesInput | $Enums.Size[]
     slug: string
     tags?: ProductCreatetagsInput | string[]
     gender: $Enums.Gender
@@ -5705,7 +5705,7 @@ export namespace Prisma {
     description: string
     inStock: number
     price?: number
-    size?: ProductCreatesizeInput | $Enums.Size[]
+    sizes?: ProductCreatesizesInput | $Enums.Size[]
     slug: string
     tags?: ProductCreatetagsInput | string[]
     gender: $Enums.Gender
@@ -5734,7 +5734,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     inStock?: IntFieldUpdateOperationsInput | number
     price?: FloatFieldUpdateOperationsInput | number
-    size?: ProductUpdatesizeInput | $Enums.Size[]
+    sizes?: ProductUpdatesizesInput | $Enums.Size[]
     slug?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -5747,7 +5747,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     inStock?: IntFieldUpdateOperationsInput | number
     price?: FloatFieldUpdateOperationsInput | number
-    size?: ProductUpdatesizeInput | $Enums.Size[]
+    sizes?: ProductUpdatesizesInput | $Enums.Size[]
     slug?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -5760,7 +5760,7 @@ export namespace Prisma {
     description: string
     inStock: number
     price?: number
-    size?: ProductCreatesizeInput | $Enums.Size[]
+    sizes?: ProductCreatesizesInput | $Enums.Size[]
     slug: string
     tags?: ProductCreatetagsInput | string[]
     gender: $Enums.Gender
@@ -5772,7 +5772,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     inStock?: IntFieldUpdateOperationsInput | number
     price?: FloatFieldUpdateOperationsInput | number
-    size?: ProductUpdatesizeInput | $Enums.Size[]
+    sizes?: ProductUpdatesizesInput | $Enums.Size[]
     slug?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -5785,7 +5785,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     inStock?: IntFieldUpdateOperationsInput | number
     price?: FloatFieldUpdateOperationsInput | number
-    size?: ProductUpdatesizeInput | $Enums.Size[]
+    sizes?: ProductUpdatesizesInput | $Enums.Size[]
     slug?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender
@@ -5798,7 +5798,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     inStock?: IntFieldUpdateOperationsInput | number
     price?: FloatFieldUpdateOperationsInput | number
-    size?: ProductUpdatesizeInput | $Enums.Size[]
+    sizes?: ProductUpdatesizesInput | $Enums.Size[]
     slug?: StringFieldUpdateOperationsInput | string
     tags?: ProductUpdatetagsInput | string[]
     gender?: EnumGenderFieldUpdateOperationsInput | $Enums.Gender

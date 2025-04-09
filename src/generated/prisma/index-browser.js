@@ -130,7 +130,7 @@ exports.Prisma.ProductScalarFieldEnum = {
   description: 'description',
   inStock: 'inStock',
   price: 'price',
-  size: 'size',
+  sizes: 'sizes',
   slug: 'slug',
   tags: 'tags',
   gender: 'gender',
@@ -156,7 +156,7 @@ exports.Gender = exports.$Enums.Gender = {
   men: 'men',
   women: 'women',
   unisex: 'unisex',
-  kids: 'kids'
+  kid: 'kid'
 };
 
 exports.Size = exports.$Enums.Size = {
