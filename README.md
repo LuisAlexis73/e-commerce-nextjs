@@ -33,8 +33,8 @@ npm install
 docker-compose up -d
 ```
 
-5. **Generate Prisma client and run migrations:**
-run `npx prisma generate`and `npx prisma migrate dev --name init`
+5. **Run Prisma migrations:**
+run `npx prisma migrate dev`
 
 6. **Run seed:**
 ```bash
