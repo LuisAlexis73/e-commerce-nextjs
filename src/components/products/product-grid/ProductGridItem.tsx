@@ -6,9 +6,10 @@ import { useState } from "react";
 
 interface Props {
   product: Product;
+  isPriority?: boolean; // Optional prop to set priority for the image if is necessary
 }
 
-export const ProductGridItem = ({ product }: Props) => {
+export const ProductGridItem = ({ product, isPriority = false }: Props) => {
 
   const [displayImage, setDisplayImage] = useState(product.images[0]);
 
@@ -21,6 +22,7 @@ export const ProductGridItem = ({ product }: Props) => {
           className="w-full object-cover rounded"
           width={500}
           height={500}
+          priority={isPriority} // Set priority for the first image to load faster if is necessary
           onMouseEnter={() => setDisplayImage(product.images[1])}
           onMouseLeave={() => setDisplayImage(product.images[0])}
         />
