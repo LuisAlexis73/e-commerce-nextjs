@@ -186,11 +186,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:pass4321@localhost:5432/teslodb?schema=public"
+        "value": null
       }
     }
   },
