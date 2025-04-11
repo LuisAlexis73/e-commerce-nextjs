@@ -5,11 +5,36 @@ import { ProductMobileSladeShow } from "@/components/product/slide-show/ProductM
 import { ProductSladeShow } from "@/components/product/slide-show/ProductSladeShow"
 import { StockLabel } from "@/components/product/stock-label/StockLabel"
 import { titleFont } from "@/config/fonts"
+import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
 
 interface Props {
   params: {
     slug: string
+  }
+}
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const resolvedSearchParams = await params;
+
+  // read route params
+  const slug = resolvedSearchParams.slug;
+
+  // fetch data
+  const product = await getProductBySlug(slug);
+
+  // optionally access and extend (rather than replace) parent metadata
+  // const previousImages = (await parent).openGraph?.images || []
+
+  return {
+    title: product?.title,
+    description: product?.description,
+    openGraph: {
+      images: [`/products/${product?.images[1]}`],
+    },
   }
 }
 

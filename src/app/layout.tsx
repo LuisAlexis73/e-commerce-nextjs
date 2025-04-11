@@ -3,7 +3,10 @@ import "./globals.css";
 import { geistSans, geistMono } from "@/config/fonts";
 
 export const metadata: Metadata = {
-  title: "Teslo Shop",
+  title: {
+    template: "%s - Teslo | Shop",
+    default: "Teslo | Shop",
+  },
   description: "A simple e-commerce site built with Next.js and Vercel.",
 };
 
