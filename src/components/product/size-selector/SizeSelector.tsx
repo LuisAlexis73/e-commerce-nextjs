@@ -3,11 +3,13 @@ import clsx from "clsx";
 
 
 interface Props {
-  selectedSize: Size;
+  selectedSize?: Size;
   availableSizes: Size[];
+
+  onSelectSize?: (size: Size) => void;
 }
 
-export const SizeSelector = ({ selectedSize, availableSizes }: Props) => {
+export const SizeSelector = ({ selectedSize, availableSizes, onSelectSize }: Props) => {
   return (
     <div className="my-5">
       <h3>Sizes availables</h3>
@@ -15,6 +17,7 @@ export const SizeSelector = ({ selectedSize, availableSizes }: Props) => {
       <div className="flex">
         {availableSizes.map(size => (
           <button
+            onClick={() => onSelectSize?.(size)}
             key={size}
             className={
               clsx(

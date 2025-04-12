@@ -1,12 +1,11 @@
 import { getProductBySlug } from "@/actions/products/get-product-by-slug"
-import { QuantitySelector } from "@/components/product/quantity-selector/QuantitySelector"
-import { SizeSelector } from "@/components/product/size-selector/SizeSelector"
 import { ProductMobileSladeShow } from "@/components/product/slide-show/ProductMobileSladeShow"
 import { ProductSladeShow } from "@/components/product/slide-show/ProductSladeShow"
 import { StockLabel } from "@/components/product/stock-label/StockLabel"
 import { titleFont } from "@/config/fonts"
 import { Metadata, ResolvingMetadata } from "next"
 import { notFound } from "next/navigation"
+import { AddToCart } from "./ui/AddToCart"
 
 interface Props {
   params: {
@@ -69,13 +68,7 @@ export default async function ProductPage({ params }: Props) {
           {product.price}
         </p>
 
-        <SizeSelector selectedSize={product.sizes[1]} availableSizes={product.sizes} />
-
-        <QuantitySelector quantity={0} />
-
-        <button className="btn-primary my-5">
-          Add to cart
-        </button>
+        <AddToCart product={product} />
 
         <h3 className="font-bold text-sm">Description</h3>
 
