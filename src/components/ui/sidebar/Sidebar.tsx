@@ -11,7 +11,7 @@ export const Sidebar = () => {
 
   return (
     <div >
-      {/* Bacground Black */}
+      {/* Background Black */}
       {
         isSideMenuOpen && (
           <div className="bg-black opacity-30 fixed top-0 left-0 w-screen h-screen z-10" />
@@ -43,7 +43,7 @@ export const Sidebar = () => {
           <input type="text" className="w-full bg-gray-100 rounded pl-10 pr-10 py-1 border-b-2 text-xl border-gray-200 focus:outline-none focus:border-blue-400" placeholder="Search" />
         </div>
 
-        <Link href="/" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all">
+        <Link href="/profile" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all" onClick={() => closeSideMenu()}>
           <IoPersonOutline size={30} />
           <span className="ml-3 text-xl">Profile</span>
         </Link>
