@@ -6,7 +6,7 @@ export default async function ProfilePage() {
 
   const session = await auth()
 
-  if (!session) {
+  if (!session?.user) {
     redirect('/')
   }
 
@@ -14,16 +14,11 @@ export default async function ProfilePage() {
     <div>
       <Title title="Profile" />
 
-      {
-        session?.user ? (
-          <div className="flex flex-col gap-4">
-            <h1 className="text-2xl font-bold">Welcome {session.user.name}</h1>
-            <p className="text-lg">Email: {session.user.email}</p>
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )
-      }
+      <div className="flex flex-col gap-4">
+        <h1 className="text-2xl font-bold">Welcome {session.user.name}</h1>
+        <p className="text-lg">Email: {session.user.email}</p>
+        <p className="text-lg">Role: {session.user.role}</p>
+      </div>
     </div>
   )
 }

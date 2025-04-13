@@ -4,11 +4,29 @@ import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
 import prisma from './lib/prisma';
 import bcryptjs from 'bcryptjs';
+import { AdapterUser } from 'next-auth/adapters';
 
 export const authConfig: NextAuthConfig = {
   pages: {
     signIn: '/auth/signin',
     newUser: 'auth/new-account',
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+
+      if (user) {
+        token.data = user
+      }
+
+      return token;
+    },
+    async session({ session, token, user }) {
+      console.log('Session callback:', { session, token, user });
+
+      session.user = token.data as AdapterUser & { id: string; name: string; email: string; role: string; image?: string };
+
+      return session;
+    },
   },
   providers: [
     Credentials({
@@ -40,4 +58,4 @@ export const authConfig: NextAuthConfig = {
   ]
 };
 
-export const { auth, signIn, signOut } = NextAuth(authConfig);
+export const { auth, signIn, signOut, handlers } = NextAuth(authConfig);

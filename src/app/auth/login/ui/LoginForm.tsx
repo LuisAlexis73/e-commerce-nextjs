@@ -1,5 +1,5 @@
 'use client'
-import { authenticate } from '@/actions/products/auth/login';
+import { authenticate } from '@/actions/auth/login';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useActionState } from 'react';
@@ -13,7 +13,6 @@ export const LoginForm = () => {
     authenticate,
     undefined,
   );
-
 
   return (
     <form action={formAction} className="space-y-3">
@@ -54,8 +53,7 @@ export const LoginForm = () => {
           )}
         </div>
 
-
-        {/* divisor l ine */}
+        {/* divisor line */}
         <div className="flex items-center my-5">
           <div className="flex-1 border-t border-gray-500"></div>
           <div className="px-2 text-gray-800">O</div>
