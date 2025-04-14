@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client'
 import { logout } from "@/actions/auth/logout"
 import { useUIStore } from "@/store/ui/ui-store"
 import clsx from "clsx"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
+import { useEffect } from "react"
 import { IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoPeopleOutline, IoPersonOutline, IoSearchCircleOutline, IoShirtOutline, IoTicketOutline } from "react-icons/io5"
 
 export const Sidebar = () => {
@@ -11,8 +13,14 @@ export const Sidebar = () => {
   const isSideMenuOpen = useUIStore(state => state.isSideMenuOpen);
   const closeSideMenu = useUIStore(state => state.closeSideMenu);
 
-  const { data: session } = useSession()
+  const { data: session, update } = useSession()
   const isAuthenticated = !!session?.user;
+
+  const isAdmin = session?.user
+
+  useEffect(() => {
+    update()
+  }, [])
 
   return (
     <div >
@@ -77,23 +85,29 @@ export const Sidebar = () => {
           )
         }
 
-        <div className="w-full h-px bg-gray-300 my-10" />
+        {
+          isAdmin?.role === 'admin' && (
+            <>
+              <div className="w-full h-px bg-gray-300 my-10" />
+              < Link href="/" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all">
+                <IoShirtOutline size={30} />
+                <span className="ml-3 text-xl">Products</span>
+              </Link>
 
-        <Link href="/" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all">
-          <IoShirtOutline size={30} />
-          <span className="ml-3 text-xl">Products</span>
-        </Link>
+              <Link href="/" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all">
+                <IoShirtOutline size={30} />
+                <span className="ml-3 text-xl">Orders</span>
+              </Link>
 
-        <Link href="/" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all">
-          <IoShirtOutline size={30} />
-          <span className="ml-3 text-xl">Orders</span>
-        </Link>
+              <Link href="/" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all">
+                <IoPeopleOutline size={30} />
+                <span className="ml-3 text-xl">Users</span>
+              </Link>
+            </>
+          )
+        }
 
-        <Link href="/" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all">
-          <IoPeopleOutline size={30} />
-          <span className="ml-3 text-xl">Users</span>
-        </Link>
       </nav>
-    </div>
+    </div >
   )
 }
