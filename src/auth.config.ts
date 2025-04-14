@@ -12,7 +12,22 @@ export const authConfig: NextAuthConfig = {
     newUser: 'auth/new-account',
   },
   callbacks: {
-    async jwt({ token, user }) {
+    authorized({ auth, request: { nextUrl } }) {
+      console.log({ auth })
+      // const isLoggedIn = !!auth?.user;
+      // const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
+
+      // if (isOnDashboard) {
+      //   if (isLoggedIn) return true;
+      //   return false;
+      // } else if (isLoggedIn) {
+      //   return Response.redirect(new URL('/dashboard', nextUrl))
+      // }
+
+      return true;
+    },
+
+    jwt({ token, user }) {
 
       if (user) {
         token.data = user
@@ -20,8 +35,8 @@ export const authConfig: NextAuthConfig = {
 
       return token;
     },
-    async session({ session, token, user }) {
-      console.log('Session callback:', { session, token, user });
+
+    session({ session, token, user }) {
 
       session.user = token.data as AdapterUser & { id: string; name: string; email: string; role: string; image?: string };
 
