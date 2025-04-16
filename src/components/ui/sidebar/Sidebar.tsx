@@ -56,23 +56,25 @@ export const Sidebar = () => {
           <input type="text" className="w-full bg-gray-100 rounded pl-10 pr-10 py-1 border-b-2 text-xl border-gray-200 focus:outline-none focus:border-blue-400" placeholder="Search" />
         </div>
 
-        <Link href="/profile" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all" onClick={() => closeSideMenu()}>
-          <IoPersonOutline size={30} />
-          <span className="ml-3 text-xl">Profile</span>
-        </Link>
-
-        <Link href="/" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all">
-          <IoTicketOutline size={30} />
-          <span className="ml-3 text-xl">Orders</span>
-        </Link>
-
         {
           isAuthenticated && (
-            <button className="w-full flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all"
-              onClick={() => { logout(); closeSideMenu() }}>
-              <IoLogOutOutline size={30} />
-              <span className="ml-3 text-xl">Logout</span>
-            </button>
+            <>
+              <Link href="/profile" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all" onClick={() => closeSideMenu()}>
+                <IoPersonOutline size={30} />
+                <span className="ml-3 text-xl">Profile</span>
+              </Link>
+
+              <Link href="/" className="flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all">
+                <IoTicketOutline size={30} />
+                <span className="ml-3 text-xl">Orders</span>
+              </Link>
+
+              <button className="w-full flex items-center mt-10 p-2 hover:bg-gray-100 rounded cursor-pointer transition-all"
+                onClick={() => { logout(); closeSideMenu() }}>
+                <IoLogOutOutline size={30} />
+                <span className="ml-3 text-xl">Logout</span>
+              </button>
+            </>
           )
         }
 

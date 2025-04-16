@@ -18,6 +18,7 @@ export const TopMenu = () => {
     setLoaded(true);
   }, [])
 
+  if (!loaded) return null;
 
   return (
     <nav className="flex px-5  justify-between items-center w-full">
@@ -52,7 +53,7 @@ export const TopMenu = () => {
         } className="mx-2">
           <div className="relative">
             {
-              (loaded && totalItemsInCart > 0) && (
+              (totalItemsInCart > 0) && (
                 <span className="fade-in absolute text-xs rounded-full px-1 font-bold -top-2 -right-2 bg-blue-700 text-white">
                   {totalItemsInCart}
                 </span>
