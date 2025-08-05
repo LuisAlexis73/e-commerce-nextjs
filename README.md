@@ -53,7 +53,14 @@ npm run dev
 If you make changes to the Prisma scheme (prisma/schema.prisma), remember to execute:
 ```bash
 npx prisma generate
+```
+```bash
 npx prisma migrate dev --name <name_of_migration>
+```
+
+To create the `AUTH_SECRET` environment variable, run the following command in the terminal.
+```bash
+openssl rand -base64 32
 ```
 
 #### Project structure
