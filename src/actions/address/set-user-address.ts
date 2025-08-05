@@ -54,7 +54,7 @@ const createOrReplaceAddress = async (address: Address, userId: string) => {
 
     return updateAddress
   } catch (error) {
-    console.error('Error creating or replacing address:', error);
-    throw new Error('Failed to create or replace address');
+    console.error(error);
+    throw new Error('Address could not be saved');
   }
 }

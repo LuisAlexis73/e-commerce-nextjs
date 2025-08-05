@@ -1,4 +1,5 @@
 'use client';
+import { placeOrder } from "@/actions/order/place-order";
 import { useAddressStore } from "@/store/address/address-store";
 import { useCartStore } from "@/store/cart/cart-store";
 import { currencyFormatter } from "@/utils/currency-formatter";
@@ -30,8 +31,8 @@ export const PlaceOrder = () => {
       size: product.size,
     }));
 
-    console.log('address: ', address, 'products: ', productsToOrder);
-
+    const response = await placeOrder(productsToOrder, address);
+    console.log({ response });
 
     setIsPlacingOrder(false);
   }
