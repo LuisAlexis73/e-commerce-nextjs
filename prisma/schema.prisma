@@ -111,9 +111,10 @@ model UserAddress {
 model Order {
   id           String    @id @default(uuid())
   subTotal     Float
+  tax          Float
   total        Float
   itemsInOrder Int
-  isPaid       Boolean
+  isPaid       Boolean   @default(false)
   paidAt       DateTime?
 
   createdAt DateTime @default(now())
