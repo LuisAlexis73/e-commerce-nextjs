@@ -15,7 +15,7 @@ export const PlaceOrder = () => {
 
   const { getTotalSummaryInformation } = useCartStore()
   const { subTotal, tax, total, itemsInCart } = getTotalSummaryInformation()
-
+  const cart = useCartStore((state) => state.cart);
 
   useEffect(() => {
     setLoaded(true);
@@ -24,7 +24,13 @@ export const PlaceOrder = () => {
   const onPlaceOrder = async () => {
     setIsPlacingOrder(true);
 
-    console.log({ address });
+    const productsToOrder = cart.map((product) => ({
+      productId: product.id,
+      quantity: product.quantity,
+      size: product.size,
+    }));
+
+    console.log('address: ', address, 'products: ', productsToOrder);
 
 
     setIsPlacingOrder(false);
@@ -80,8 +86,8 @@ export const PlaceOrder = () => {
         </p> */}
 
         <button
-          type='submit'
           onClick={onPlaceOrder}
+          disabled={isPlacingOrder}
           className={
             clsx(
               {
