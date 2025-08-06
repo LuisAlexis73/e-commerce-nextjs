@@ -46,6 +46,8 @@ npm run seed
 npm run dev
 ```
 
+8. **Limpiar Local Storage.**
+
 ---
 
 ### Additional notes
