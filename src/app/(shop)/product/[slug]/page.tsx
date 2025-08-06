@@ -39,7 +39,7 @@ export async function generateMetadata(
 
 export default async function ProductPage({ params }: Props) {
 
-  const { slug } = await params
+  const { slug } = params
   const product = await getProductBySlug(slug);
 
   if (!product) {

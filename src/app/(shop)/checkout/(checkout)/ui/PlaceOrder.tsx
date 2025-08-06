@@ -5,11 +5,14 @@ import { useCartStore } from "@/store/cart/cart-store";
 import { currencyFormatter } from "@/utils/currency-formatter";
 import clsx from "clsx";
 import Link from "next/link"
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react"
 
 export const PlaceOrder = () => {
+  const router = useRouter();
 
   const [loaded, setLoaded] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
 
   const address = useAddressStore((state) => state.address);
@@ -17,6 +20,7 @@ export const PlaceOrder = () => {
   const { getTotalSummaryInformation } = useCartStore()
   const { subTotal, tax, total, itemsInCart } = getTotalSummaryInformation()
   const cart = useCartStore((state) => state.cart);
+  const clearCart = useCartStore((state) => state.clearCart);
 
   useEffect(() => {
     setLoaded(true);
@@ -32,9 +36,15 @@ export const PlaceOrder = () => {
     }));
 
     const response = await placeOrder(productsToOrder, address);
-    console.log({ response });
+    if (!response.ok) {
+      setIsPlacingOrder(false);
+      setErrorMessage(response.message)
 
-    setIsPlacingOrder(false);
+      return
+    }
+
+    clearCart();
+    router.replace('/orders/' + response.order?.id)
   }
 
   if (!loaded) {
@@ -82,9 +92,9 @@ export const PlaceOrder = () => {
           </span>
         </p>
 
-        {/* <p className="text-red-500">
-          Error placing order. Please try again later.
-        </p> */}
+        <p className="text-red-500">
+          {errorMessage}
+        </p>
 
         <button
           onClick={onPlaceOrder}
