@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { getProductBySlug } from "@/actions/products/get-product-by-slug"
 import { ProductMobileSladeShow } from "@/components/product/slide-show/ProductMobileSladeShow"
 import { ProductSladeShow } from "@/components/product/slide-show/ProductSladeShow"
@@ -20,7 +21,7 @@ export async function generateMetadata(
   const resolvedSearchParams = await params;
 
   // read route params
-  const slug = resolvedSearchParams.slug;
+  const slug = await resolvedSearchParams.slug;
 
   // fetch data
   const product = await getProductBySlug(slug);

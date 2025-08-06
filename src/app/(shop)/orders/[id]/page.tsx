@@ -1,4 +1,5 @@
 import { getOrderById } from "@/actions/order/get-order-by-id";
+import { PayPalButton } from "@/components/paypal/PayPalButton";
 import { Title } from "@/components/title/Title";
 import { currencyFormatter } from "@/utils/currency-formatter";
 import clsx from "clsx";
@@ -105,18 +106,7 @@ export default async function OrdersByIdPage({ params }: Props) {
                 </span>
               </p>
 
-              <div className={clsx(
-                'flex items-center rounded-lg py-2 px-3.5 text-xs font-bold text-white mb-5',
-                {
-                  'bg-red-500': !order!.isPaid,
-                  'bg-green-600': order!.isPaid,
-                }
-              )}>
-                <IoCartOutline size={30} />
-                <span className="mx-2">
-                  {order?.isPaid ? 'Paid' : 'Unpaid'}
-                </span>
-              </div>
+              <PayPalButton orderId={order!.id} amount={order!.total} />
             </div>
           </div>
         </div>
