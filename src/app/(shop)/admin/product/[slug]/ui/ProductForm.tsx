@@ -2,6 +2,7 @@
 "use client";
 
 import { createUpdateProduct } from "@/actions/products/create-update-product";
+import { deleteProductImage } from "@/actions/products/delete-product-image";
 import { ProductImage } from "@/components/product/product-image/ProductImage";
 import { Category } from "@/interfaces/category.interface";
 import { Product } from "@/interfaces/product.interface";
@@ -27,7 +28,7 @@ interface FormInputs {
   tags: string;
   gender: "men" | "women" | "kid" | "unisex";
   categoryId: string;
-  // images?: FileList;
+  images?: FileList;
 }
 
 export const ProductForm = ({ product, categories }: Props) => {
@@ -45,7 +46,7 @@ export const ProductForm = ({ product, categories }: Props) => {
       ...product,
       tags: product.tags?.join(", "),
       sizes: product.sizes ?? [],
-      // images: undefined,
+      images: undefined,
     },
   });
 
@@ -61,8 +62,7 @@ export const ProductForm = ({ product, categories }: Props) => {
   const onSubmit = async (data: FormInputs) => {
     const formData = new FormData();
 
-    // const { images, ...productToSave } = data;
-    const { ...productToSave } = data;
+    const { images, ...productToSave } = data;
 
     if (product.id) {
       formData.append("id", product.id ?? "");
@@ -78,11 +78,11 @@ export const ProductForm = ({ product, categories }: Props) => {
     formData.append("categoryId", productToSave.categoryId);
     formData.append("gender", productToSave.gender);
 
-    // if (images) {
-    //   for (let i = 0; i < images.length; i++) {
-    //     formData.append("images", images[i]);
-    //   }
-    // }
+    if (images) {
+      for (let i = 0; i < images.length; i++) {
+        formData.append("images", images[i]);
+      }
+    }
 
     const { ok, product: updatedProduct } = await createUpdateProduct(formData);
 
@@ -215,7 +215,7 @@ export const ProductForm = ({ product, categories }: Props) => {
             <input
               type="file"
               multiple
-              // {...register('images')}
+              {...register('images')}
               className="p-2 border rounded-md bg-gray-100 cursor-pointer"
               accept="image/png, image/jpeg, image/webp, image/avif"
             />
@@ -234,8 +234,8 @@ export const ProductForm = ({ product, categories }: Props) => {
 
                 <button
                   type="button"
-                  onClick={() => console.log(image.id, image.url)}
-                  className="btn-danger w-full rounded-b-xl"
+                  onClick={() => deleteProductImage(image.url, image.id)}
+                  className="btn-danger w-full rounded-b-xl cursor-pointer"
                 >
                   Delete
                 </button>
