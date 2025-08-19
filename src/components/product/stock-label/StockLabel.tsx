@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { getStockBySlug } from "@/actions/products/get-stock-by-slug";
 import { titleFont } from "@/config/fonts";
@@ -14,14 +13,15 @@ export const StockLabel = ({ slug }: Props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getStock();
-  }, [])
+    const getStock = async () => {
+      const stock = await getStockBySlug(slug);
+      setStock(stock);
+      setLoading(false);
+    }
 
-  const getStock = async () => {
-    const stock = await getStockBySlug(slug);
-    setStock(stock);
-    setLoading(false);
-  }
+    getStock();
+  }, [slug]);
+
 
   return (
     <div>

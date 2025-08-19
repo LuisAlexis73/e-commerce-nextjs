@@ -20,7 +20,7 @@ export default async function ProfilePage() {
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-8 text-center">
             <div className="relative w-32 h-32 mx-auto">
               <Image
-                src={session.user.image || "/products/1700280-00-A_1.jpg"}
+                src={session.user.image || "/imgs/placeholder.jpg"}
                 alt={`Foto de ${session.user.name}`}
                 className="rounded-full object-cover border-4 border-white shadow-lg"
                 fill
@@ -35,8 +35,8 @@ export default async function ProfilePage() {
               {session.user.role === "user"
                 ? "Customer"
                 : session.user.role === "admin"
-                ? "Administrator"
-                : "Guest"}
+                  ? "Administrator"
+                  : "Guest"}
             </p>
           </div>
 

@@ -12,7 +12,7 @@ export const authConfig: NextAuthConfig = {
     newUser: 'auth/new-account',
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
+    authorized({ auth, request: { } }) {
       console.log({ auth })
       // const isLoggedIn = !!auth?.user;
       // const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
@@ -36,7 +36,7 @@ export const authConfig: NextAuthConfig = {
       return token;
     },
 
-    session({ session, token, user }) {
+    session({ session, token }) {
 
       session.user = token.data as AdapterUser & { id: string; name: string; email: string; role: string; image?: string };
 

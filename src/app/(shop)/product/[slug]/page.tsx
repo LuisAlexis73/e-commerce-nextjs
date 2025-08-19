@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { getProductBySlug } from "@/actions/products/get-product-by-slug"
 import { ProductMobileSladeShow } from "@/components/product/slide-show/ProductMobileSladeShow"
 import { ProductSladeShow } from "@/components/product/slide-show/ProductSladeShow"
 import { StockLabel } from "@/components/product/stock-label/StockLabel"
 import { titleFont } from "@/config/fonts"
-import { Metadata, ResolvingMetadata } from "next"
+import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { AddToCart } from "./ui/AddToCart"
 
@@ -15,8 +14,7 @@ interface Props {
 }
 
 export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
+  { params }: Props
 ): Promise<Metadata> {
   const resolvedSearchParams = await params;
 
@@ -39,8 +37,9 @@ export async function generateMetadata(
 }
 
 export default async function ProductPage({ params }: Props) {
+  const resolvedSearchParams = await params;
 
-  const { slug } = params
+  const slug = await resolvedSearchParams.slug;
   const product = await getProductBySlug(slug);
 
   if (!product) {
