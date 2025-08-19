@@ -7,23 +7,24 @@ import { redirect } from "next/navigation";
 interface Props {
   searchParams: {
     page?: string;
-  }
+  };
 }
 
 export default async function Home({ searchParams }: Props) {
-  const resolvedSearchParams = await searchParams;
+  const params = await searchParams;
+  const page = params.page ? parseInt(params.page) : 1;
 
-  const page = resolvedSearchParams.page ? parseInt(resolvedSearchParams.page) : 1;
-
-  const { products, totalPages } = await getPaginatedProductsWithImages({ page });
+  const { products, totalPages } = await getPaginatedProductsWithImages({
+    page,
+  });
 
   if (products.length === 0) {
-    redirect('/');
+    redirect("/");
   }
 
   return (
     <>
-      <Title title='Tienda' subtitle='Todos los productos' className='mb-2' />
+      <Title title="Store" subtitle="All products" className="mb-2" />
 
       <ProductGrid products={products} />
 

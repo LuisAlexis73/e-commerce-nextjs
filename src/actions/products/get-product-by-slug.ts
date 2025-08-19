@@ -1,35 +1,28 @@
-'use server'
+"use server";
 
-import prisma from "@/lib/prisma"
+import prisma from "@/lib/prisma";
 
 export const getProductBySlug = async (slug: string) => {
   try {
-
-    // Get product by slug
-    const product = await prisma.product.findUnique({
+    const product = await prisma.product.findFirst({
       where: {
         slug: slug,
       },
       include: {
-        productImage: {
-          select: {
-            url: true,
-          }
-        }
-      }
-    })
+        productImage: true,
+      },
+    });
 
     if (!product) {
-      throw new Error('Product not found')
+      throw null;
     }
 
     return {
       ...product,
-      images: product.productImage.map((image) => image.url)
-    }
-
+      images: product.productImage.map((image) => image.url),
+    };
   } catch (error) {
     console.error(error);
-    throw new Error('Error fetching product by slug');
+    throw new Error("Error fetching product by slug");
   }
-}
+};
