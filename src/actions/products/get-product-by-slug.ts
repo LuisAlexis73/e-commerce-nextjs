@@ -14,7 +14,7 @@ export const getProductBySlug = async (slug: string) => {
     });
 
     if (!product) {
-      throw null;
+      return null;
     }
 
     return {

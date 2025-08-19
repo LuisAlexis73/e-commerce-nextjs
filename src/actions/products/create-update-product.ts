@@ -65,17 +65,17 @@ export const createUpdateProduct = async (formData: FormData) => {
 
       } else {
         // Crear
-        // product = await prisma.product.create({
-        //   data: {
-        //     ...rest,
-        //     sizes: {
-        //       set: rest.sizes as Size[],
-        //     },
-        //     tags: {
-        //       set: tagsArray,
-        //     },
-        //   },
-        // });
+        product = await prisma.product.create({
+          data: {
+            ...rest,
+            sizes: {
+              set: rest.sizes as Size[],
+            },
+            tags: {
+              set: tagsArray,
+            },
+          },
+        });
       }
 
       // Proceso de carga y guardado de imagenes
@@ -95,19 +95,21 @@ export const createUpdateProduct = async (formData: FormData) => {
       //   });
       // }
 
+      console.log({ product });
+
       return {
-        // product,
+        product,
       };
     });
 
     // Todo: RevalidatePaths
-    // revalidatePath("/admin/products");
-    // revalidatePath(`/admin/product/${slugParsed.slug}`);
-    // revalidatePath(`/products/${slugParsed.slug}`);
+    revalidatePath("/admin/products");
+    revalidatePath(`/admin/product/${slugParsed.slug}`);
+    revalidatePath(`/products/${slugParsed.slug}`);
 
     return {
       ok: true,
-      // product: prismaTx.product,
+      product: prismaTx.product,
     };
   } catch (error) {
     console.log(error);

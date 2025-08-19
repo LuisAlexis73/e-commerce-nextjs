@@ -84,15 +84,14 @@ export const ProductForm = ({ product, categories }: Props) => {
     //   }
     // }
 
-    // const { ok, product: updatedProduct } = await createUpdateProduct(formData);
-    const { ok, } = await createUpdateProduct(formData);
+    const { ok, product: updatedProduct } = await createUpdateProduct(formData);
 
     if (!ok) {
       alert("Product can not be updated");
       return;
     }
 
-    // router.replace(`/admin/products/${updatedProduct?.slug}`);
+    router.replace(`/admin/product/${updatedProduct?.slug}`);
   };
 
   return (
