@@ -7,8 +7,12 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { AddToCart } from "./ui/AddToCart"
 
+interface Props {
+  params: Promise<{ slug: string }>
+}
+
 export async function generateMetadata(
-  { params }: { params: { slug: string } },
+  { params }: Props,
 ): Promise<Metadata> {
   const resolvedSearchParams = await params;
 
@@ -31,7 +35,7 @@ export async function generateMetadata(
   }
 }
 
-export default async function ProductBySlugPage({ params }: { params: { slug: string } }) {
+export default async function ProductBySlugPage({ params }: Props) {
   const resolvedSearchParams = await params;
 
   const { slug } = await resolvedSearchParams;

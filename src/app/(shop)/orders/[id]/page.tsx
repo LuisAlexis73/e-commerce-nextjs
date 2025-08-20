@@ -8,9 +8,9 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default async function OrdersByIdPage({ params }: Props) {

@@ -8,7 +8,6 @@ interface Props {
 
 export const Providers = ({ children }: Props) => {
 
-
   return (
     <PayPalScriptProvider options={{
       clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? '',

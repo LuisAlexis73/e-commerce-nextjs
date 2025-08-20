@@ -4,17 +4,16 @@ import { getPaginatedProductsWithImages } from "@/actions/products/product-pagin
 import { ProductGrid } from "@/components/products/product-grid/ProductGrid"
 import { Title } from "@/components/title/Title"
 import { Pagination } from "@/components/ui/pagination/Pagination";
-import { Gender } from "@/generated/prisma";
+import { Gender } from "@prisma/client";
 import { redirect } from "next/navigation";
 
-
 interface Props {
-  params: {
+  params: Promise<{
     gender: string;
-  },
-  searchParams: {
+  }>,
+  searchParams: Promise<{
     page?: string;
-  }
+  }>
 }
 
 export default async function GenderByPage({ params, searchParams }: Props) {

@@ -7,9 +7,7 @@ import { Pagination } from "@/components/ui/pagination/Pagination";
 import Link from "next/link";
 
 interface Props {
-  searchParams: {
-    page?: string;
-  };
+  searchParams: Promise<{ page?: string }>
 }
 
 export default async function ProductsPage({ searchParams }: Props) {

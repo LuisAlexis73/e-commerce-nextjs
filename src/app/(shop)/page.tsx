@@ -5,9 +5,9 @@ import { Pagination } from "@/components/ui/pagination/Pagination";
 import { redirect } from "next/navigation";
 
 interface Props {
-  searchParams: {
+  searchParams: Promise<{
     page?: string;
-  };
+  }>;
 }
 
 export default async function Home({ searchParams }: Props) {
