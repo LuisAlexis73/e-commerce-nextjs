@@ -4,6 +4,7 @@ import { SizeSelector } from "@/components/product/size-selector/SizeSelector"
 import { CartProduct, Product, Size } from "@/interfaces/product.interface"
 import { useCartStore } from "@/store/cart/cart-store"
 import { useState } from "react"
+import Toastify from 'toastify-js'
 
 interface Props {
   product: Product
@@ -14,12 +15,32 @@ export const AddToCart = ({ product }: Props) => {
 
   const [size, setSize] = useState<Size | undefined>();
   const [quantity, setQuantity] = useState<number>(1);
+  const [error, setError] = useState(false);
 
   const addToCart = () => {
     if (!size) {
-      alert('Please select a size')
+      setError(true);
       return;
     }
+
+    setError(false);
+
+    Toastify({
+      text: "Product added to cart",
+      duration: 3000,
+      gravity: "bottom",
+      style: {
+        background: "linear-gradient(to left, #00b09b, #96c93d)",
+        width: "200px",
+        color: "#fff",
+        position: "absolute",
+        right: "20px",
+        borderRadius: "5px",
+        padding: "8px",
+        textAlign: "center",
+        boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)"
+      }
+    }).showToast();
 
     const cartProduct: CartProduct = {
       id: product.id,
@@ -45,6 +66,7 @@ export const AddToCart = ({ product }: Props) => {
       <button className="btn-primary my-5 cursor-pointer" onClick={addToCart}>
         Add to cart
       </button>
+      {error && <p className="text-red-500 font-semibold my-2">Please select a size</p>}
     </>
   )
 }

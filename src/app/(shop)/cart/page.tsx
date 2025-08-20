@@ -8,7 +8,7 @@ export default function CartPage() {
   return (
     <div className="flex justify-center items-center mb-10 px-10 sm:px-0">
       <div className="flex flex-col w-[1000px]">
-        <Title title="Cart" className="text-center mb-10" />
+        <Title title="Items in Cart" className="text-center mb-10" />
         <div className="grid grid-col-1 sm:grid-cols-2 gap-10">
           <div className="flex flex-col">
             <span className="text-xl">Add more items</span>

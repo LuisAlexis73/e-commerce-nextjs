@@ -1,11 +1,14 @@
 'use client'
 import { ProductImage } from "@/components/product/product-image/ProductImage";
 import { QuantitySelector } from "@/components/product/quantity-selector/QuantitySelector";
+import { CartProduct } from "@/interfaces/product.interface";
 import { useCartStore } from "@/store/cart/cart-store"
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export const ProductsInCart = () => {
+  const router = useRouter();
 
   const productsInCart = useCartStore(state => state.cart)
   const updateProductsInCart = useCartStore(state => state.updateProductQuantity);
@@ -16,6 +19,15 @@ export const ProductsInCart = () => {
   useEffect(() => {
     setLoaded(true)
   }, [])
+
+  const handleRemove = (product: CartProduct) => {
+    const isLastItem = productsInCart.length === 1;
+    removeProduct(product);
+
+    if (isLastItem) {
+      router.replace('/empty');
+    }
+  }
 
   if (!loaded) {
     return <p className="text-center">Loading...</p>
@@ -42,13 +54,13 @@ export const ProductsInCart = () => {
                 {product.size} - {product.title}
               </Link>
 
-              <p>{product.price}</p>
+              <p>${product.price}</p>
 
               <QuantitySelector quantity={product.quantity} onSelectedQuantity={value => updateProductsInCart(product, value)} />
 
               <button
-                onClick={() => removeProduct(product)}
-                className="underline mt-3 cursor-pointer">
+                onClick={() => handleRemove(product)}
+                className="underline mt-3 cursor-pointer hover:text-red-500">
                 Remove
               </button>
             </div>
