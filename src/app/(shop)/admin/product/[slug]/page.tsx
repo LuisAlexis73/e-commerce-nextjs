@@ -4,13 +4,7 @@ import { getCategories } from "@/actions/category/get-categories";
 import { redirect } from "next/navigation";
 import { ProductForm } from "./ui/ProductForm";
 
-interface Props {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function ProductPage({ params }: Props) {
+export default async function ProductPage({ params }: { params: { slug: string } }) {
   const { slug } = await params;
 
   const [product, categories] = await Promise.all([

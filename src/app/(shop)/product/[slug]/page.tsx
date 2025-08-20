@@ -7,19 +7,12 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { AddToCart } from "./ui/AddToCart"
 
-interface Props {
-  params: {
-    slug: string
-  }
-}
-
 export async function generateMetadata(
-  { params }: Props
+  { params }: { params: { slug: string } },
 ): Promise<Metadata> {
   const resolvedSearchParams = await params;
 
-  // read route params
-  const slug = await resolvedSearchParams.slug;
+  const { slug } = await resolvedSearchParams;
 
   // fetch data
   const product = await getProductBySlug(slug);
@@ -31,15 +24,17 @@ export async function generateMetadata(
     title: product?.title,
     description: product?.description,
     openGraph: {
+      title: product?.title ?? 'Product not found',
+      description: product?.description ?? 'No description available',
       images: [`/products/${product?.images[1]}`],
     },
   }
 }
 
-export default async function ProductPage({ params }: Props) {
+export default async function ProductBySlugPage({ params }: { params: { slug: string } }) {
   const resolvedSearchParams = await params;
 
-  const slug = await resolvedSearchParams.slug;
+  const { slug } = await resolvedSearchParams;
   const product = await getProductBySlug(slug);
 
   if (!product) {
