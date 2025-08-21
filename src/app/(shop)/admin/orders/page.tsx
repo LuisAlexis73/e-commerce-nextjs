@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 import { IoCardOutline } from "react-icons/io5";
 
 export default async function OrdersPage() {
-  const { ok, orders } = await getPaginatedOrders();
+  const { ok, orders, totalPages } = await getPaginatedOrders();
 
   if (!ok) {
     redirect("/auth/login");
@@ -86,7 +86,7 @@ export default async function OrdersPage() {
           </tbody>
         </table>
 
-        <Pagination totalPages={3} />
+        <Pagination totalPages={totalPages!} />
       </div>
     </>
   );

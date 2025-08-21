@@ -21,9 +21,9 @@ export const SizeSelector = ({ selectedSize, availableSizes, onSelectSize }: Pro
             key={size}
             className={
               clsx(
-                'hover:underline mx-2 cursor-pointer',
+                'mx-2 cursor-pointer',
                 {
-                  'underline': size === selectedSize
+                  'bg-blue-500 rounded px-1 text-blue-50': size === selectedSize
                 }
               )
             }

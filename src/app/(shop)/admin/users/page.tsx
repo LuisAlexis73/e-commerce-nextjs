@@ -7,7 +7,7 @@ import { getPaginatedUsers } from "@/actions/user/get-paginated-users";
 import { Pagination } from "@/components/ui/pagination/Pagination";
 
 export default async function OrdersPage() {
-  const { ok, users = [] } = await getPaginatedUsers();
+  const { ok, users = [], totalPages } = await getPaginatedUsers();
 
   if (!ok) {
     redirect("/auth/login");
@@ -20,7 +20,7 @@ export default async function OrdersPage() {
       <div className="mb-10">
         <UsersTable users={users} />
 
-        <Pagination totalPages={3} />
+        <Pagination totalPages={totalPages!} />
       </div>
     </>
   );

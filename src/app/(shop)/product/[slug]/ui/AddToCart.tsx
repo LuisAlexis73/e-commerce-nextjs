@@ -30,7 +30,7 @@ export const AddToCart = ({ product }: Props) => {
       duration: 3000,
       gravity: "bottom",
       style: {
-        background: "linear-gradient(to left, #00b09b, #96c93d)",
+        background: "linear-gradient(to left, #193cb8, #155dfc)",
         width: "200px",
         color: "#fff",
         position: "absolute",

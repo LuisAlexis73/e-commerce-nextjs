@@ -3,7 +3,19 @@
 import { auth } from "@/auth.config";
 import prisma from "@/lib/prisma";
 
-export const getPaginatedOrders = async () => {
+interface PaginationOptions {
+  page?: number;
+  take?: number;
+}
+
+export const getPaginatedOrders = async ({
+  page = 1,
+  take = 10,
+}: PaginationOptions = {
+  }) => {
+  if (isNaN(Number(page))) page = 1;
+  if (page < 1) page = 1;
+
   const session = await auth();
 
   if (session?.user.role !== "admin") {
@@ -25,10 +37,17 @@ export const getPaginatedOrders = async () => {
         },
       },
     },
+    take: take,
+    skip: (page - 1) * take,
   });
+
+  const totalCount = await prisma.order.count();
+  const totalPages = Math.ceil(totalCount / take);
 
   return {
     ok: true,
     orders: orders,
+    currentPage: page,
+    totalPages: totalPages,
   };
 };

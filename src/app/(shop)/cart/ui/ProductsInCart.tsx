@@ -1,6 +1,7 @@
 'use client'
 import { ProductImage } from "@/components/product/product-image/ProductImage";
 import { QuantitySelector } from "@/components/product/quantity-selector/QuantitySelector";
+import { Skeleton } from "@/components/ui/skeleton";
 import { CartProduct } from "@/interfaces/product.interface";
 import { useCartStore } from "@/store/cart/cart-store"
 import Link from "next/link";
@@ -30,7 +31,23 @@ export const ProductsInCart = () => {
   }
 
   if (!loaded) {
-    return <p className="text-center">Loading...</p>
+    return (
+      <div className="flex mb-3 mt-5">
+        <Skeleton
+          className="mr-5 rounded"
+        />
+
+        <div>
+          <Skeleton className="underline text-blue-500 hover:text-blue-800" />
+
+          <Skeleton className="w-[50px]" />
+
+          <Skeleton className="w-[100px] h-[36px] mt-2" />
+
+          <Skeleton className="underline mt-3 cursor-pointer hover:text-red-500 w-[70px]" />
+        </div>
+      </div>
+    )
   }
 
   return (

@@ -1,4 +1,5 @@
 'use client'
+import { Skeleton } from "@/components/ui/skeleton";
 import { useCartStore } from "@/store/cart/cart-store";
 import { currencyFormatter } from "@/utils/currency-formatter";
 import { useEffect, useState } from "react"
@@ -14,7 +15,21 @@ export const OrderSummary = () => {
   }, [])
 
   if (!loaded) {
-    return <p className="text-center">Loading...</p>
+    return (
+      <div className="grid grid-cols-2">
+        <Skeleton className="w-52 h-6 mb-5" />
+        <Skeleton className="text-right w-52 h-6 mb-5" />
+
+        <Skeleton className="w-52 h-6 mb-5" />
+        <Skeleton className="text-right w-52 h-6 mb-5" />
+
+        <Skeleton className="w-52 h-6 mb-5" />
+        <Skeleton className="text-right w-52 h-6 mb-6" />
+
+        <Skeleton className="w-52 h-6 mb-5" />
+        <Skeleton className="text-right w-52 h-6 mb-6" />
+      </div>
+    )
   }
 
   return (

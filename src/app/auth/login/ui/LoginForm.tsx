@@ -35,7 +35,7 @@ export const LoginForm = () => {
         <input type='hidden' name='redirectTo' value={callbackUrl} />
         <button
           aria-disabled={isPending}
-          className="btn-primary">
+          className="btn-primary cursor-pointer">
           Log in
         </button>
 
