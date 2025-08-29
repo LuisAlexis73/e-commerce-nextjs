@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { IoCartOutline } from 'react-icons/io5';
+
 export default function EmptyPage() {
   return (
     <div className="flex items-center justify-center h-[800px]">
