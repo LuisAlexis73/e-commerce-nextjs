@@ -26,8 +26,9 @@ export const ProductSladeShow = ({ images, title, className }: Props) => {
     <div className={className}>
       <Swiper
         style={{
-          '--swiper-navigation-color': '#fff',
+          '--swiper-navigation-color': '#155dfc',
           '--swiper-pagination-color': '#fff',
+          '--swiper-cursor': 'pointer',
         } as React.CSSProperties}
         spaceBetween={10}
         navigation={true}
@@ -49,7 +50,7 @@ export const ProductSladeShow = ({ images, title, className }: Props) => {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
+        className="mySwiper cursor-pointer mt-4"
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>

@@ -66,7 +66,7 @@ export const AddToCart = ({ product }: Props) => {
       <button className="btn-primary my-5 cursor-pointer" onClick={addToCart}>
         Add to cart
       </button>
-      {error && <p className="text-red-500 font-semibold my-2">Please select a size</p>}
+      {error && <span className="text-red-500 font-semibold ml-5">Please select a size</span>}
     </>
   )
 }

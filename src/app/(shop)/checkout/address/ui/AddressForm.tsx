@@ -74,7 +74,7 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
           <span>Name</span>
           <input
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-100"
             {...register('firstName', { required: true })}
           />
         </div>
@@ -83,7 +83,7 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
           <span>Last name</span>
           <input
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-100"
             {...register('lastName', { required: true })}
           />
         </div>
@@ -92,7 +92,7 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
           <span>Address</span>
           <input
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-100"
             {...register('address', { required: true })}
           />
         </div>
@@ -101,7 +101,7 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
           <span>Address 2 (optional)</span>
           <input
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-100"
             {...register('address2')}
           />
         </div>
@@ -110,7 +110,7 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
           <span>Postal Code</span>
           <input
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-100"
             {...register('postalCode', { required: true })}
           />
         </div>
@@ -119,7 +119,7 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
           <span>City</span>
           <input
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-100"
             {...register('city', { required: true })}
           />
         </div>
@@ -127,7 +127,7 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
         <div className="flex flex-col mb-2">
           <span>Country</span>
           <select
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-100"
             {...register('country', { required: true })}
           >
             <option value="">[ Select ]</option>
@@ -143,7 +143,7 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
           <span>Phone</span>
           <input
             type="text"
-            className="p-2 border rounded-md bg-gray-200"
+            className="p-2 border rounded-md bg-gray-100"
             {...register('phone', { required: true })}
           />
         </div>
@@ -189,7 +189,7 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
               "flex w-full justify-center items-center py-2 px-4 rounded transition-all cursor-pointer sm:w-1/2",
               {
                 'btn-primary': isValid,
-                'bg-gray-400': !isValid
+                'bg-gray-400 text-white': !isValid
               })
             }
           >

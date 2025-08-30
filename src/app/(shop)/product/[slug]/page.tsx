@@ -64,12 +64,12 @@ export default async function ProductBySlugPage({ params }: Props) {
         </h1>
 
         <p className="text-lg mb-5">
-          {product.price}
+          ${product.price}
         </p>
 
         <AddToCart product={product} />
 
-        <h3 className="font-bold text-sm">Description</h3>
+        <h3 className="font-bold text-sm mt-5">Description</h3>
 
         <p className="font-light">
           {product.description}

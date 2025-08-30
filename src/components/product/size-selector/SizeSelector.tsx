@@ -23,7 +23,7 @@ export const SizeSelector = ({ selectedSize, availableSizes, onSelectSize }: Pro
               clsx(
                 'mx-2 cursor-pointer',
                 {
-                  'bg-blue-500 rounded px-1 text-blue-50': size === selectedSize
+                  'text-blue-600 underline font-bold': size === selectedSize
                 }
               )
             }
