@@ -2,15 +2,19 @@
 import { titleFont } from "@/config/fonts"
 import { useCartStore } from "@/store/cart/cart-store"
 import { useUIStore } from "@/store/ui/ui-store"
+import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { IoSearchCircleOutline, IoCartOutline } from "react-icons/io5"
+import { IoCartOutline, IoLogInOutline } from "react-icons/io5"
 
 export const TopMenu = () => {
 
   const openSideMenu = useUIStore(state => state.openSideMenu);
 
   const totalItemsInCart = useCartStore(state => state.getTotalItems());
+
+  const { data: session } = useSession();
+  const isAuthenticated = !!session?.user;
 
   const [loaded, setLoaded] = useState(false);
 
@@ -44,9 +48,6 @@ export const TopMenu = () => {
       </div>
 
       <div className="flex items-center">
-        <Link href="/search">
-          <IoSearchCircleOutline className="w-5 h-5" />
-        </Link>
 
         <Link href={
           (totalItemsInCart === 0) ? '/empty' : '/cart'
@@ -64,9 +65,21 @@ export const TopMenu = () => {
           </div>
         </Link>
 
-        <button className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 cursor-pointer" onClick={() => openSideMenu()}>
-          Menú
-        </button>
+        {
+          isAuthenticated ? (
+            <button className="m-2 p-2 rounded-md transition-all hover:bg-gray-100 cursor-pointer" onClick={() => openSideMenu()}>
+              Menú
+            </button>
+          ) : (
+            <Link
+              href="/auth/login"
+              className="flex items-center p-2 hover:bg-gray-100 rounded cursor-pointer transition-all"
+            >
+              <IoLogInOutline size={30} />
+              <span className="ml-3 text-xl">Login</span>
+            </Link>
+          )
+        }
       </div>
     </nav>
   )

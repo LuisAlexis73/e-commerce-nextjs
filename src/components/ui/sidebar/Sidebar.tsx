@@ -10,7 +10,6 @@ import {
   IoLogOutOutline,
   IoPeopleOutline,
   IoPersonOutline,
-  IoSearchCircleOutline,
   IoShirtOutline,
   IoTicketOutline,
 } from "react-icons/io5";
@@ -54,16 +53,6 @@ export const Sidebar = () => {
           className="absolute top-5 right-5 cursor-pointer hover:bg-gray-100 hover:rounded-4xl"
           onClick={() => closeSideMenu()}
         />
-
-        {/* Search Input */}
-        <div className="mt-14 relative flex items-center">
-          <IoSearchCircleOutline size={30} className="left-2 absolute" />
-          <input
-            type="text"
-            className="w-full bg-gray-100 rounded pl-10 pr-10 py-1 border-b-2 text-xl border-gray-200 focus:outline-none focus:border-blue-400"
-            placeholder="Search"
-          />
-        </div>
 
         {/* User Menu */}
         {isAuthenticated && (
